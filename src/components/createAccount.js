@@ -1,17 +1,36 @@
 import React from 'react';
-import { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import {connect} from 'react-redux';
 
-class CreateAccount extends Component {
+class CreateAccount extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state={
-			isAuthorized : false
+			isAuthorized : false,
+			Email : '',
+			Password : '',
+			FullName : '',
+			CBUName : '',
+			MobileNumber : '',
+			CBUType : '',
+			Designation : '',
+			WorkStation : ''
 		};
+		this.onChange = this.onChange.bind(this);
+		this.onSubmit = this.onSubmit.bind(this);
 		};
 
-componentWillMount(){
+	onChange(e) {
+    this.setState({ [e.target.id]: e.target.value });
+  	}
+
+	onSubmit(e) {
+  	e.preventDefault();
+  	console.log("State :",this.state);
+  	this.context.router.history.push('/');
+  	}
+
+	componentWillMount(){
 	console.log("control entered componentWillMount");
 	if ( ! this.props.isAuthorized) {
 		this.context.router.history.push('/');
@@ -25,46 +44,46 @@ render() {
 				<h4>Create an account</h4>
 
 			</div>
-	<form>
+	<form onSubmit={this.onSubmit}>
 		<div className="form-row">
     	<div className="form-group col-md-6">
-      	<label htmlFor="inputEmail4">Email</label>
-      	<input type="email" className="form-control" id="inputEmail4" placeholder="example : hites_297@yahoo.co.in"/>
+      	<label htmlFor="Email">Email</label>
+      	<input onChange={this.onChange} type="email" className="form-control" id="Email" placeholder="example : hites_297@yahoo.co.in"/>
     	</div>
 
     	<div className="form-group col-md-6">
-      	<label htmlFor="inputPassword4">Password</label>
-      	<input type="password" className="form-control" id="inputPassword4" placeholder="Password"/>
+      	<label htmlFor="Password">Password</label>
+      	<input onChange={this.onChange} type="password" className="form-control" id="Password" placeholder="Password"/>
     	</div>
 
     	<div className="form-group col-md-6">
-      	<label htmlFor="inputFullName">Full Name</label>
-      	<input type="text" className="form-control" id="inputFullName" placeholder="Hitesh Patel"/>
+      	<label htmlFor="FullName">Full Name</label>
+      	<input onChange={this.onChange} type="text" className="form-control" id="FullName" placeholder="Hitesh Patel"/>
     	</div>
 
     	<div className="form-group col-md-6">
-      	<label htmlFor="inputCBUName">CBU Name</label>
-      	<input type="text" className="form-control" id="inputCBUName" placeholder="5/3"/>
+      	<label htmlFor="CBUName">CBU Name</label>
+      	<input onChange={this.onChange} type="text" className="form-control" id="CBUName" placeholder="5/3"/>
     	</div>
 
     	<div className="form-group col-md-6">
-      	<label htmlFor="inputMobileNumber">Mobile Number</label>
-      	<input type="number" className="form-control" id="inputMobileNumber" placeholder="8105729963"/>
+      	<label htmlFor="MobileNumber">Mobile Number</label>
+      	<input onChange={this.onChange} type="number" className="form-control" id="MobileNumber" placeholder="8105729963"/>
     	</div>
 
     	<div className="form-group col-md-6">
-      	<label htmlFor="inputCBUType">CBU Type</label>
-      	<input type="text" className="form-control" id="inputCBUType" placeholder=""/>
+      	<label htmlFor="CBUType">CBU Type</label>
+      	<input onChange={this.onChange} type="text" className="form-control" id="CBUType" placeholder=""/>
     	</div>
 
     	<div className="form-group col-md-6">
-      	<label htmlFor="inputDesignation">Designation</label>
-      	<input type="text" className="form-control" id="inputDesignation" placeholder="Engineer Software"/>
+      	<label htmlFor="Designation">Designation</label>
+      	<input onChange={this.onChange} type="text" className="form-control" id="Designation" placeholder="Engineer Software"/>
     	</div>
 
     	<div className="form-group col-md-6">
-      	<label htmlFor="inputWorkStation">Workstation</label>
-      	<input type="password" className="form-control" id="inputWorkStation" placeholder="SLK1-ODC-4-099"/>
+      	<label htmlFor="WorkStation">Workstation</label>
+      	<input onChange={this.onChange} type="password" className="form-control" id="WorkStation" placeholder="SLK1-ODC-4-099"/>
     	</div>
 
 		<div className="form-group">

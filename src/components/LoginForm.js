@@ -14,6 +14,7 @@ class LoginForm extends React.Component {
 			inputEmail : '',
 			inputPassword : '',
 			isAuthorized : null,
+			errorMessage : ''
 		};
 
 		this.onChange = this.onChange.bind(this);
@@ -32,7 +33,10 @@ class LoginForm extends React.Component {
   	componentWillReceiveProps(nextProps)
   	{
   		this.setState({isAuthorized : nextProps.isAuthorized});
-  		if (nextProps.isAuthorized) {this.context.router.history.push('/');}
+  		if (nextProps.isAuthorized) 
+  			{this.context.router.history.push('/');}
+  		else 
+  			{this.setState({isAuthorized : nextProps.isAuthorized})}
   	}
 
  validateForm() {
@@ -85,6 +89,7 @@ class LoginForm extends React.Component {
       			  Dont have an account?
       			  <Link to="/register" className="login-help">  Register Now</Link>
       			  </div>
+
       			<p className="mt-5 mb-3 text-muted text-center">&copy; 2018-2019</p>
 
 				
