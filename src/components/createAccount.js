@@ -7,14 +7,14 @@ class CreateAccount extends React.Component {
 		super(props);
 		this.state={
 			isAuthorized : false,
-			Email : '',
-			Password : '',
-			FullName : '',
-			CBUName : '',
-			MobileNumber : '',
-			CBUType : '',
-			Designation : '',
-			WorkStation : ''
+			Email : null,
+			Password : null,
+			FullName : null,
+			CBUName : null,
+			MobileNumber : null,
+			CBUType : null,
+			Designation : null,
+			WorkStation : null
 		};
 		this.onChange = this.onChange.bind(this);
 		this.onSubmit = this.onSubmit.bind(this);
