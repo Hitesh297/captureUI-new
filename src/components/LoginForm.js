@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import { PropTypes } from 'prop-types';
 import { Router } from 'react-router';
+import { Link } from 'react-router-dom';
 
 
 class LoginForm extends React.Component {
@@ -12,7 +13,7 @@ class LoginForm extends React.Component {
 		this.state = {
 			inputEmail : '',
 			inputPassword : '',
-			isAuthorized : '',
+			isAuthorized : null,
 		};
 
 		this.onChange = this.onChange.bind(this);
@@ -39,6 +40,7 @@ class LoginForm extends React.Component {
   }
 
 		render() {
+			 const isLoggedIn = this.state.isAuthorized;
 			return (
 				<form className="form-signin" onSubmit={this.onSubmit} > 
 
@@ -79,6 +81,10 @@ class LoginForm extends React.Component {
 
 
       			<button className="btn btn-lg btn-primary btn-block" type="submit" disabled={!this.validateForm()}>Sign in</button>
+      			  <div className="text-center mt-3">
+      			  Dont have an account?
+      			  <Link to="/register" className="login-help">  Register Now</Link>
+      			  </div>
       			<p className="mt-5 mb-3 text-muted text-center">&copy; 2018-2019</p>
 
 				
