@@ -30,11 +30,11 @@ class CreateAccount extends React.Component {
   	this.context.router.history.push('/');
   	}
 
-	componentWillMount(){
-	if (!this.props.isAuthorized || this.props.isAuthorized.length == 0) {
-		this.context.router.history.push('/');
-	}
-}
+	// componentWillMount(){
+	// if (!this.props.isAuthorized || this.props.isAuthorized.length == 0) {
+	// 	this.context.router.history.push('/');
+	// }
+  //}
 
 render() {
 		return (

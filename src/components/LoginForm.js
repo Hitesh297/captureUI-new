@@ -34,9 +34,11 @@ class LoginForm extends React.Component {
   	{
   		this.setState({isAuthorized : nextProps.isAuthorized});
   		if (nextProps.isAuthorized) 
-  			{this.context.router.history.push('/register');}
+  			{this.context.router.history.push('/');}
   		else 
-  			{this.setState({isAuthorized : nextProps.isAuthorized})}
+  		{
+  			this.setState({errorMessage : "Invalid Email or Password!"});
+  		}
   	}
 
  validateForm() {
@@ -44,7 +46,7 @@ class LoginForm extends React.Component {
   }
 
 		render() {
-			 const isLoggedIn = this.state.isAuthorized;
+			 
 			return (
 				<form className="form-signin" onSubmit={this.onSubmit} > 
 
@@ -74,9 +76,11 @@ class LoginForm extends React.Component {
         		className="form-control" 
         		placeholder="Password" />
         		<label htmlFor="inputPassword">Password </label>
+        		<div class="text-md-left text-danger mx-auto " > {this.state.errorMessage} </div>
       			</div>
 
-
+				
+      			
       			<div className="checkbox mb-3">
       			<label>
           		<input type="checkbox" value="remember-me"/> Remember me
