@@ -11,7 +11,7 @@ export default () => (
 	<Switch>
 		<Route exact path='/' component={App} />
 		<Route exact path='/login' component={LoginPage} />
-		<Route exact path='/register' component={CreateAccount} />                                                                                                    
+		<Route exact path='/register' component={CreateAccount} />                                                                                                  
 	</Switch>
 	</div>
 </BrowserRouter>

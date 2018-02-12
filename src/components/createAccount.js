@@ -31,8 +31,7 @@ class CreateAccount extends React.Component {
   	}
 
 	componentWillMount(){
-	console.log("control entered componentWillMount");
-	if ( ! this.props.isAuthorized) {
+	if (!this.props.isAuthorized || this.props.isAuthorized.length == 0) {
 		this.context.router.history.push('/');
 	}
 }
@@ -97,6 +96,7 @@ render() {
 
 	</div>
   <button className="btn btn-primary" type="submit">Submit</button>
+  <div>{this.props.isAuthorized.value} </div>
 	</form>
 	</div>
 			);

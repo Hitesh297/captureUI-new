@@ -34,7 +34,7 @@ class LoginForm extends React.Component {
   	{
   		this.setState({isAuthorized : nextProps.isAuthorized});
   		if (nextProps.isAuthorized) 
-  			{this.context.router.history.push('/');}
+  			{this.context.router.history.push('/register');}
   		else 
   			{this.setState({isAuthorized : nextProps.isAuthorized})}
   	}
