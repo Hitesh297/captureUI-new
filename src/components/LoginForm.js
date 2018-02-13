@@ -76,7 +76,7 @@ class LoginForm extends React.Component {
         		className="form-control" 
         		placeholder="Password" />
         		<label htmlFor="inputPassword">Password </label>
-        		<div class="text-md-left text-danger mx-auto " > {this.state.errorMessage} </div>
+        		<div className="text-md-left text-danger mx-auto " > {this.state.errorMessage} </div>
       			</div>
 
 				
