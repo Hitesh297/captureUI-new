@@ -14,10 +14,13 @@ class CreateAccount extends React.Component {
 			MobileNumber : null,
 			CBUType : null,
 			Designation : null,
-			WorkStation : null
+			WorkStation : null,
+      imgSrc : null
+
 		};
 		this.onChange = this.onChange.bind(this);
 		this.onSubmit = this.onSubmit.bind(this);
+    this.onImageSelect = this.onImageSelect.bind(this);
 		};
 
 	onChange(e) {
@@ -30,6 +33,16 @@ class CreateAccount extends React.Component {
   	this.context.router.history.push('/');
   	}
 
+  onImageSelect(e) {
+       e.preventDefault();
+    var file = e.target.files[0];
+  var reader = new FileReader();
+  var url = reader.readAsDataURL(file);
+  reader.onloadend = () => {
+      this.setState({imgSrc:reader.result})
+  }
+   reader.readAsDataURL(file)
+}
 	// componentWillMount(){
 	// if (!this.props.isAuthorized || this.props.isAuthorized.length == 0) {
 	// 	this.context.router.history.push('/');
@@ -41,11 +54,33 @@ render() {
 			<div>
 			<div>
 				<h4>Create an account</h4>
-
 			</div>
+
 	<form onSubmit={this.onSubmit}>
-		<div className="form-row">
-    	<div className="form-group col-md-6">
+		
+    <div className="form-row">
+
+    <div className="form-group col-md-6">
+    <img 
+    className="form-group img-thumbnail"
+    src={this.state.imgSrc} 
+    width="150" 
+    height="150"
+    />
+    </div>
+
+    <div>
+     <input 
+        className="form-group col-md-6"
+        title=" "
+        ref="file" 
+        type="file" 
+        multiple="true"
+        onChange={this.onImageSelect}
+        />
+      </div>
+
+    	<div className="form-group col-md-6 ">
       	<label htmlFor="Email">Email</label>
       	<input onChange={this.onChange} type="email" className="form-control" id="Email" placeholder="example : hites_297@yahoo.co.in"/>
     	</div>
