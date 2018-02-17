@@ -44,10 +44,17 @@ export default class App extends Component {
         <ul className="list-unstyled">
         <li>
         <div className="my-3 p-3 bg-white rounded box-shadow">
-
+		<img className="mr-3 float-right img-thumbnail" src="https://neo4j.com/wp-content/themes/neo4jweb/assets/images/neo4j-logo-2015.png" alt="" width="150" height="150"/>
           <p className="media-body pb-3 mb-0 small lh-125  border-gray">
-            <strong className="d-block text-gray-dark">@username</strong>
-            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+            <strong className="d-block text-gray-dark">@Hitesh</strong>
+            Neo4j solutions by Use Case
+	<br /><br />Fraud Detection
+	<br />Identity and Access
+	<br />Knowledge Graph
+	<br />Master Data Management
+	<br />Network and IT Operations
+	<br />Recommendation Engine
+	<br />Social Network
           </p>
          </div>
          </li>
