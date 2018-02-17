@@ -90,20 +90,3 @@ body {
   color: #777;
 }
 
-.post1{
-top:290px;
-left:240px;
-position:absolute;
-background:white;
-width:580px;
-height:600px;
-border-radius:3px/3px;
-}
-
-.post{top:70px;
-left:240px;
-position:absolute;
-width:600px;
-height:210px;
-
-}

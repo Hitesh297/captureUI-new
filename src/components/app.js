@@ -1,13 +1,26 @@
 import React from 'react';
 import { Component } from 'react';
 import { BrowserRouter, Link } from 'react-router-dom';
+import { getPosts } from '../actions/authActions';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import PostList from './postList';
 
-export default class App extends Component {
+class App extends Component {
+	constructor(props){
+		super(props)
+		this.state = {
+			posts : []
+		};
+		
+		    this.props.getPosts('12345');
+	}
+
+
 	render() {
+		console.log("state",this.state);
 		return (
 			<div className="">
-
-
 
     <nav className="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
       <a className="navbar-brand" href="#">SLK Capture</a>
@@ -31,7 +44,7 @@ export default class App extends Component {
         <div className="d-flex align-items-center p-3 my-3 text-white-50 bg-grey rounded box-shadow">
         <img className="mr-3" src="https://cdn2.iconfinder.com/data/icons/images-and-video/36/27_camera_photo_video_capture_device_focus_flash_photography-512.png" alt="" width="48" height="48"/>
         <div className="lh-100">
-          <h5 className="mb-0 text-white lh-100">Speak your mind out, let's make this world a better place to live.</h5>  
+          <h5 className="mb-0 text-white lh-100">Capture you thoughts, capture the moments. All at one place.</h5>  
         </div>
       	</div>
 
@@ -41,32 +54,7 @@ export default class App extends Component {
         </div>
 
 
-        <ul className="list-unstyled">
-        <li>
-        <div className="my-3 p-3 bg-white rounded box-shadow">
-		<img className="mr-3 float-right img-thumbnail" src="https://neo4j.com/wp-content/themes/neo4jweb/assets/images/neo4j-logo-2015.png" alt="" width="150" height="150"/>
-          <p className="media-body pb-3 mb-0 small lh-125  border-gray">
-            <strong className="d-block text-gray-dark">@Hitesh</strong>
-            Neo4j solutions by Use Case
-	<br /><br />Fraud Detection
-	<br />Identity and Access
-	<br />Knowledge Graph
-	<br />Master Data Management
-	<br />Network and IT Operations
-	<br />Recommendation Engine
-	<br />Social Network
-          </p>
-         </div>
-         </li>
-         <li>
-         <div className="my-3 p-3 bg-white rounded box-shadow">
-          <p className="media-body pb-3 mb-0 small lh-125 border-gray">
-            <strong className="d-block text-gray-dark">@username</strong>
-            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-          </p>
-        </div>
-        </li>
-        </ul>
+        <PostList posts = {this.props.posts} />
 
         </main>
 				
@@ -74,3 +62,11 @@ export default class App extends Component {
 			);
 	}
 }
+function mapStateToProps({posts}) {
+  return {posts};
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({getPosts},dispatch);
+}
+export default connect(mapStateToProps,mapDispatchToProps)(App);
