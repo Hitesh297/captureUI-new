@@ -5,6 +5,7 @@ body {
 
 body {
   padding-top: 56px;
+  padding-bottom: 56px;
 }
 
 @media (max-width: 767.98px) {
@@ -73,6 +74,11 @@ body {
 
 .bg-grey { background-color: #A9A9A9 }
 
+.bg-green { 
+  background-color: #28a745;
+  opacity: 0.8; 
+   }
+
 .border-bottom { border-bottom: 1px solid #e5e5e5; }
 
 .box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
@@ -83,4 +89,29 @@ body {
 
 .ul-nobullet {
   list-style-type: none;
+}
+
+.thumbnail {
+    position: relative;
+}
+
+.caption {
+    position: absolute;
+    top: 45%;
+    left: 0;
+    width: 100%;
+    opacity : 0;
+    background-color: #ffffff;
+     transition: .5s ease;
+     height: 100%;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+
+.thumbnail:hover .caption {
+  opacity: 0.5;
 }

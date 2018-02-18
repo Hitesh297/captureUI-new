@@ -53,26 +53,38 @@ render() {
 		return (
 			<div>
 			<div>
-				<h4>Create an account</h4>
+				<h4>Create account</h4>
 			</div>
 
 	<form onSubmit={this.onSubmit}>
   <div className="form-row">
 
     <div className="form-group ">
+
+
+    <div className="thumbnail">
     <img 
     className="form-group img-thumbnail"
     src={this.state.imgSrc} 
     width="150" 
     height="150"
     />
+    <div className="caption card card-body d-inline-block" onClick={()=>this.fileInput.click()}>
+            <p className="text-center">Click to upload</p>
+        </div>
+    </div>
+    
+    
+
+
     <input 
-        className="form-control-file "
+        style = {{display:'none'}}
         ref="file" 
-        type="file" 
-        multiple="false"
+        type="file"
         onChange={this.onImageSelect}
+        ref={fileInput => this.fileInput = fileInput}
         />
+        
     </div>
     
     </div>
