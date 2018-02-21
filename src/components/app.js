@@ -5,16 +5,24 @@ import { getPosts } from '../actions/authActions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import PostList from './postList';
+import Popup from './popup';
 
 class App extends Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			posts : []
+			posts : [],
+			showPopup: false
 		};
 		
 		    this.props.getPosts('12345');
 	}
+
+	togglePopup() {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
+  }
 
 
 	render() {
@@ -51,8 +59,16 @@ class App extends Component {
         <form>
 
         <div className="form-group btn-group" role="group" aria-label="Basic example">
-  		<button type="button" className="btn btn-link">Add Photos/Videos</button>
+  		<button type="button" onClick={this.togglePopup.bind(this)} className="btn btn-link">Add Photos/Videos</button>
 		</div>
+
+		{this.state.showPopup ? 
+          <Popup
+            text='Close Me'
+            closePopup={this.togglePopup.bind(this)}
+          />
+          : null
+        }
 
   		<div className="form-group">
     	<textarea className="form-control" id="Textarea1" rows="3" placeholder="Update post here."></textarea>
