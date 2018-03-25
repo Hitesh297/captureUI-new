@@ -1,16 +1,22 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import Routes from './routes';
-import {createStore, applyMiddleware} from 'redux';
-import ReduxPromise from 'redux-promise';
-import reducers from './reducers';
-import {Provider} from 'react-redux';
 
-const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
+
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "react-apollo";
+import { HttpLink } from 'apollo-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+
+const client = new ApolloClient({
+	uri: 'http://localhost:8080/graphql'
+});
+
+//const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 
 ReactDom.render(
-	 <Provider store={createStoreWithMiddleware(reducers)}>
+	 <ApolloProvider client={client}>
 	<Routes />
-	  </Provider>
+	  </ApolloProvider>
 	,document.querySelector('.container')
 	);

@@ -1,14 +1,16 @@
 import React from 'react';
 import PostListItem from './postListItem';
 
-const PostList = (props) => {
+const PostList = ({posts}) => {
+console.log("posts loop", posts);
 
- const postItems = props.posts.map((post)=>{
- 	
+
+ const postItems = posts.map((blog)=>{
+
 	return (
 		<PostListItem
-		post={post} 
-		key={post.postDetails}
+		post={blog}
+		key={blog.blogTitle}
 		/>
 	);
  });

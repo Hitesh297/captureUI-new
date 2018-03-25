@@ -1,0 +1,26 @@
+#insert blog data
+  mutation {
+    writeBlogT(
+      blogText : "This is the Blog1 text",
+      blogTitle:"THIS IS THE BLOG1 TITLE"
+    ) 
+    {
+      graphId
+    }
+  }
+
+  #read all blogs
+    query {
+    allBlogT{blogText}
+  }
+  
+ #insert user 
+  mutation{
+  writeUser(userName:"Hitesh",email:"hites_297@yahoo.co.in",password:"123456")
+  {
+    userName,
+    email,
+    password
+  }
+
+}
